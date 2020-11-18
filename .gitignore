@@ -15,4 +15,4 @@ rnaseq/data/refs/Pstrigosa_transdecoder/
 rnaseq/data/refs/Pstrigosa_salmon_index/
 rnaseq/data/refs/..__checkpoints/
 rnaseq/data/refs/..__checkpoints_longorfs/
-tagseq/data/refs/
+tagseq/data/refs/*

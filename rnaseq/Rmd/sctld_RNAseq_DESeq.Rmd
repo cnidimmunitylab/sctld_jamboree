@@ -46,7 +46,7 @@ txi <- tximport(quant_files, type="salmon",
 ?tximport
 ```
 ```{r transcript_annotation}
-gene_annotation <- read.delim(file = "./data/psst_annotations.tsv", header = T) %>% arrange(ID)
+# gene_annotation <- read.delim(file = "./data/psst_annotations.tsv", header = T) %>% arrange(ID)
 # rownames(gene_annotation) <- gene_annotation$ID
 # # Check gene feature annotation and countdata rowname order coherence
 # all(rownames(countdata.sorted) == gene_annotation$ID)
@@ -116,7 +116,7 @@ pcoa2 <- ggplot(mds_trmt, aes(fill = Treatment)) +
   # geom_segment(mapping = aes(x = `1`, y = `2`, xend = c1, yend = c2),
                # lwd = 0.25, col = "dark grey") +
   # treatment centroid points
-  # geom_point(size = 3, aes(x = c1, y = c2, color = Treatment), fill = "black", shape = 21, stroke = 2, show.legend = FALSE) +
+  geom_point(size = 3, aes(x = c1, y = c2, color = Treatment), fill = "black", shape = 21, stroke = 2, show.legend = FALSE) +
   # sample points
   geom_point(size = 3, aes(x = `1`, y = `2`, color = Treatment), stroke = 0.5, show.legend = FALSE)
   # scale_color_manual(values = condcolors_AxH) +

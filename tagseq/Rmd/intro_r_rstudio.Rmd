@@ -1,0 +1,95 @@
+---
+title: "Intro R and RStudio"
+output: html_document
+---
+
+## Downloading R and RStudio
+
+R download - https://www.r-project.org/ 
+RStudio Download (Desktop and free version) - https://rstudio.com/products/rstudio/download/ 
+
+
+
+## Package Downloading
+
+There are 2 main ways to download packages in RStudio 
+
+1. Install Packages  
+
+This is the way you should try first, it is the inbuilt in RStudio
+
+```{r, echo = F}
+install.packages()
+```
+
+To download packages you need to find the ones you want, we are going to dowloand first the `tidyverse` which, for me, is a staple load at the beginning of nearly R markdown I make. 
+
+```{r, echo = F}
+install.packages("tidyverse")
+```
+
+When installing you will need to bring up the **console** which is in the bottom left. you may need to enter **a** or **y** (yes) for updating older packages.  
+
+Once you have installed you can then simply load them at the start of your markdown. Loading packages allows RStudio to access the functions within the packages. 
+
+```{r}
+library(tidyverse)
+```
+
+2. Bioconducter
+
+This is the go to for bioinformatic software. Alot of software you use for bioinformatics cannot be installed through `install.packages()` so you have to do it this way. 
+
+First of all, you need to instal the bioconducter interface for RStudio
+
+```{r, echo = F}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install(version = "3.12")
+```
+
+Once this is done, to install packages you need the following command. You seem to always need all of it for it to work properly. Note the install command where you specify the packages. 
+
+```{r, echo = F}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("DESeq2")
+```
+
+You can then load the packages as before with `library`
+
+```{r, echo = F}
+library(DESeq2)
+```
+
+## Packages Needed for Analysis 
+
+```{r}
+install.packages("tidyverse")
+```
+
+```{r}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("DESeq2")
+BiocManager::install("tximport")
+BiocManager::install("ComplexHeatmap")
+BiocManager::install("DEGreport")
+BiocManager::install("limma")
+BiocManager::install("edgeR")
+BiocManager::install("pheatmap")
+```
+
+
+```{r, echo = F}
+library(tximport)
+library(DESeq2)
+library(tidyverse)
+library(tximport)
+library(ComplexHeatmap)
+library(DEGreport)
+library(limma)
+library(edgeR)
+library(pheatmap)
+```
+
