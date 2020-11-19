@@ -22,8 +22,8 @@ module load samtools
 module load subread
 
 for samp in $samples ; do
-samtools index ${prodir}/outputs/alignments/${samp}Aligned.sortedByCoord.out.bam | samtools view -q 255 -Sub \
--o ${prodir}/outputs/alignments/${samp}Aligned.sortedByCoord.out.uniq.bam
+samtools index ${prodir}/outputs/alignments/${samp}_Aligned.sortedByCoord.out.bam | samtools view -q 255 -Sub \
+-o ${prodir}/outputs/alignments/${samp}_Aligned.sortedByCoord.out.uniq.bam
 done
 
 featureCounts -T 5 -t gene -s 1 \
