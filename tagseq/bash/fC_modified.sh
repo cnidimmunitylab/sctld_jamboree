@@ -17,7 +17,6 @@
 prodir="/scratch/projects/transcriptomics/mikeconnelly/projects/sctld_jamboree/tagseq"
 # making a list of sample names
 samples=`ls /scratch/projects/transcriptomics/ben_young/SCTLD/raw_reads | cut -f 1 -d '.'`
-ksamples=`cat $samples | cut -f 3 -d '_'`
 
 module load samtools
 module load subread
