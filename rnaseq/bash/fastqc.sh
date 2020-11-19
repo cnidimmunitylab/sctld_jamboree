@@ -1,7 +1,7 @@
 #!/bin/bash
 #./bash/fastqc.sh
 #purpose: quality checking of raw RNAseq reads using FASTQC on Pegasus compute node
-#To start this job from the sctld_jamboree/rnaseq directory, use:
+#To start this job from the sctld_jamboree/tagseq directory, use:
 #bsub -P transcriptomics < ./bash/fastqc.sh
 
 #BSUB -J fastqc
@@ -14,10 +14,15 @@
 #BSUB -N
 
 #specify variable containing sequence file prefixes and directory paths
-prodir="/scratch/projects/transcriptomics/mikeconnelly/projects/sctld_jamboree/rnaseq"
-samples="K1 K2 K6 K7 K8 K12 K13"
+prodir="/scratch/projects/transcriptomics/mikeconnelly/projects/sctld_jamboree/tagseq"
+# making a list of sample names
+samples=`ls /scratch/projects/transcriptomics/ben_young/SCTLD/raw_reads | cut -f 1 -d '.'`
+ksamples=`cat $samples | cut -f 3 -d '_'`
 
 module load java/1.8.0_60
-module load fastqc/
-fastqc ${prodir}/data/reads/[K][123456]*.txt.gz \
---outdir ${prodir}/outputs/fastqcs/
+module load fastqc/0.10.1
+bzip2 -d ${prodir}/data/raw_reads/*.fastq.bz2
+fastqc ${prodir}/data/raw_reads/*.fastq \
+--outdir ${prodir}/outputs/logfiles/fastqcs/
+
+echo "fastqc complete on $ksamples"
