@@ -22,7 +22,8 @@ module load samtools
 module load subread
 
 for samp in $samples ; do
-samtools index ${prodir}/outputs/alignments/${samp}_Aligned.sortedByCoord.out.bam | samtools view -q 255 -Sub \
+#samtools index ${prodir}/outputs/alignments/${samp}_Aligned.sortedByCoord.out.bam
+samtools view -q 255 -Sub ${prodir}/outputs/alignments/${samp}_Aligned.sortedByCoord.out.bam \
 -o ${prodir}/outputs/alignments/${samp}_Aligned.sortedByCoord.out.uniq.bam
 done
 
